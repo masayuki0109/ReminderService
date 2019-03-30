@@ -73,6 +73,14 @@ class ReminderService {
         }
         return false;
     }
+
+    askPermission(message){
+        const PERMISSIONS = ['alexa::alerts:reminders:skill:readwrite'];
+        return this.handlerInput.responseBuilder
+            .speak(message)
+            .withAskForPermissionsConsentCard(PERMISSIONS)
+            .getResponse();
+    }
     
 }
 
